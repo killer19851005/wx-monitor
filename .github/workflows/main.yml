@@ -7,6 +7,17 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Send WxPusher message
+        run: |
+          curl "https://wxpusher.zjiecode.com/api/send/message/${{ secrets.WXPUSHER_SPT }}/Hello%20from%20GitHub"name: Test WxPusher
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
       - name: Test
             - name: Send WxPusher message
       run: |
