@@ -8,4 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test
-        run: echo "Hello WxPusher"
+            - name: Send WxPusher message
+      run: |
+        curl -X POST "https://wxpusher.zjiecode.com/api/send/message" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "appToken": "${{ secrets.WXPUSHER_APP_TOKEN }}",
+            "content": "测试成功！GitHub Actions 已经可以发送 WxPusher 消息了。",
+            "summary": "股票监控测试",
+            "contentType": 1,
+            "uids": ["${{ secrets.WXPUSHER_UID }}"]
+          }'
